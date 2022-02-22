@@ -15,17 +15,17 @@ screen.bgcolor("black")
 screen.title("Pong")
 screen.tracer(0)
 
-r_paddle = Paddle((350,0))
-l_paddle = Paddle((-350,0))
+right_paddle = Paddle((360,0))
+left_paddle = Paddle((-360,0))
 ball = Ball()
-score = Scoreboard()
+scoreboard = Scoreboard()
 
 # Screen listener functions
 screen.listen()
-screen.onkeypress(r_paddle.up, 'Up')
-screen.onkeypress(r_paddle.down, 'Down')
-screen.onkeypress(l_paddle.up, 'w')
-screen.onkeypress(l_paddle.down, 's')
+screen.onkeypress(right_paddle.up, 'Up')
+screen.onkeypress(right_paddle.down, 'Down')
+screen.onkeypress(left_paddle.up, 'w')
+screen.onkeypress(left_paddle.down, 's')
 
 game_is_on = True
 # Basic game loop, refresh every 0.1 second
@@ -34,7 +34,7 @@ while game_is_on:
     time.sleep(ball.move_speed)
     ball.move()
     ball.detect_wall_collision()
-    ball.detect_paddle_collision(r_paddle,l_paddle)
-    ball.detect_goal(score)
+    ball.detect_paddle_collision(right_paddle,left_paddle)
+    ball.detect_goal(scoreboard)
 
 screen.exitonclick()

@@ -6,27 +6,30 @@ ALIGNMENT = 'center'
 FONT = ('Courier', 80, 'normal')
 
 class Scoreboard(Turtle):
+    """Class for creating, writing and updating the scoreboard. Extends Turtle"""
     def __init__(self) -> None:
         super().__init__()
-        #self.shape('circle')
         self.penup()
         self.hideturtle()
         self.color('white')
-        self.l_score = 0
-        self.r_score = 0
+        self.left_score = 0
+        self.right_score = 0
         self.update_scoreboard()
 
     def update_scoreboard(self):
+        """Clear scoreboard, rewrite new scores"""
         self.clear()
         self.goto(-100,200)
-        self.write(self.l_score, align=ALIGNMENT, font=FONT)
+        self.write(self.left_score, align=ALIGNMENT, font=FONT)
         self.goto(100,200)
-        self.write(self.r_score, align=ALIGNMENT, font=FONT)
+        self.write(self.right_score, align=ALIGNMENT, font=FONT)
     
-    def r_point(self):
-        self.r_score += 1
+    def right_point(self):
+        """Increase the points for right side"""
+        self.right_score += 1
         self.update_scoreboard()
     
-    def l_point(self):
-        self.l_score += 1
+    def left_point(self):
+        """"increase the points for left side"""
+        self.left_score += 1
         self.update_scoreboard()
